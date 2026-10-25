@@ -1,0 +1,42 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Notify Plugin\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Sérgio Dinis Lopes\n"
+"Language-Team: Sérgio Dinis Lopes\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: src/Template/Notifications/dropdown.tpl
+msgid "Notifications"
+msgstr "Notificações"
+
+#: src/Template/Notifications/dropdown.tpl
+msgid "unread"
+msgstr "não lidas"
+
+#: src/Template/Notifications/dropdown.tpl
+msgid "All caught up"
+msgstr "Tudo em dia :D"
+
+#: src/Template/Notifications/dropdown.tpl
+msgid "No notifications yet."
+msgstr "Ainda sem notificações."
+
+#: src/Template/Notifications/dropdown.tpl
+msgid "Mark as read"
+msgstr "Marcar como lida"
+
+#: src/Template/Notifications/dropdown.tpl
+msgid "Mark all as read"
+msgstr "Marcar todas como lidas"
+
+#: src/Template/Notifications/dropdown.tpl
+msgid "Enable notifications on your device"
+msgstr "Ativar notificações no seu dispositivo"
