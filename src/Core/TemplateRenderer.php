@@ -42,7 +42,8 @@ final class TemplateRenderer {
      *  - pipes: {{ key|modifier:'arg'|other }}
      *
      * @param array<string, mixed> $vars
-     * @param bool $escapeHtml When true, applies the global "escape" modifier at the end.
+     * @param bool $escapeHtml When true, applies the global "escape" modifier at the end, except to an
+     *   expression ending in `|raw` (trusted fragment) or `|escape` (escaped once already).
      * @return string Rendered string (never throws).
      */
     public function render(string $template, array $vars, bool $escapeHtml = false): string {
@@ -73,18 +74,19 @@ final class TemplateRenderer {
         $key = array_shift($parts);
         $value = $this->resolveValue((string) $key, $vars);
 
+        $last = '';
         foreach ($parts as $pipe) {
             if ($pipe === '') {
                 continue;
             }
             [$name, $args] = $this->parseModifier($pipe);
             $value = $this->modifiers->apply($name, $value, $args);
+            $last = strtolower($name);
         }
 
-        if ($escapeHtml) {
-            // Escape unless template explicitly uses |raw (no-op) after it escaped.
-            // We can't perfectly detect ordering, so we provide an explicit |escape modifier
-            // and a global escapeHtml toggle for html templates.
+        // HTML templates escape every value, unless the expression ends in |raw
+        // (a trusted fragment, output as is) or in |escape (already escaped once).
+        if ($escapeHtml && $last !== 'raw' && $last !== 'escape') {
             $value = $this->modifiers->apply('escape', $value);
         }
 

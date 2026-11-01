@@ -589,6 +589,8 @@ The locale is resolved per notification send — see `->locale()` in the Fluent 
 
 Built-in modifiers: `upper`, `lower`, `default`, `date`, `escape`, `raw`.
 
+In `email/html.html` every value is HTML-escaped after its modifiers, except when the expression ends in `|raw` (a trusted fragment, output as is: escape every value you put in it yourself) or in `|escape` (escaped once). A list or a table built in code goes in with `{{ items_html|raw }}`.
+
 **Example** — `shift/assigned/in_app/title.txt`:
 ```
 Shift assigned for {{ shift.date|date:'d/m/Y' }}
